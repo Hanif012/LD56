@@ -7,12 +7,10 @@ public static class Loader
 
     public enum Scene
     {
-        Fathi,
-        Sandbox,
 
     }
-   public static void Load(Scene scene)
+   public static void Load()
    {
-        SceneManager.LoadScene(scence.ToString());
+    SceneManager.LoadScene("");
    }
 }
