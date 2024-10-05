@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
         set { noNearbyEnemies = value; }
     }
 
+    public object UIExperienceBar { get; private set; }
+
     void Start()
     {
         spatialGroup = GameController.instance.GetSpatialGroup(transform.position.x , transform.position.y); // GET spatial group
@@ -142,13 +144,13 @@ public class Player : MonoBehaviour
                 nearestEnemyPosition = closestPosition;
         }
     }
-
+    // ToDo : add Experience and Health
     public void ModifyExperience(int amount)
     {
-        xp += amount;
-        UIExperienceBar.instance.UpdateExperienceBar(xp - xpFromLastLevel, xpToNextLevel - xpFromLastLevel);
+        // xp += amount;
+        // UIExperienceBar.instance.UpdateExperienceBar(xp - xpFromLastLevel, xpToNextLevel - xpFromLastLevel);
 
-        if (xp >= xpToNextLevel) LevelUp();
+        // if (xp >= xpToNextLevel) LevelUp();
     }
 
     public void LevelUp()
@@ -157,15 +159,16 @@ public class Player : MonoBehaviour
         xpToNextLevel = Utils.GetExperienceRequired(level) - xpToNextLevel;
         level++;
 
-        UIExperienceBar.instance.SetLevelText(level);
+        // Todo: Update UI
+        // UIExperienceBar.instance.SetLevelText(level);
 
     }
 
     public void ModifyHealth(int amount)
     {
         health += amount;
-
-        UIHealthBar.instance.UpdateBar(health, maxHealth);
+        // Todo: Update UI
+        // UIHealthBar.instance.UpdateBar(health, maxHealth);
 
         if (health <= 0)
         {

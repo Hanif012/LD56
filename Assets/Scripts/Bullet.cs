@@ -139,7 +139,7 @@ public class Bullet : MonoBehaviour
         // Trigger the event when the bullet is destroyed
         OnDestroy?.Invoke(transform);
 
-        Weaponary.instance.ProjectileCount--;
+        // Weaponary.instance.ProjectileCount--;
         GameController.instance.bulletSpatialGroups[spatialGroup].Remove(this);
         Destroy(gameObject);
         isDestroyed = true;

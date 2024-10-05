@@ -52,8 +52,8 @@ public class GameController : MonoBehaviour
     [HideInInspector] public Dictionary<int, HashSet<Bullet>> bulletSpatialGroups = new Dictionary<int, HashSet<Bullet>>();
 
     // For experience points
-    public GameObject experiencePointPF;
-    public Transform experiencePointHolder;
+    // public GameObject experiencePointPF;
+    // public Transform experiencePointHolder;
 
     // For get spatial group STATIC (more efficient) calculations
     int CELLS_PER_ROW_STATIC;
@@ -382,13 +382,13 @@ public class GameController : MonoBehaviour
     {
         // Vector3 offSet = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0); // Randomize position a bit
 
-        GameObject expPointsGO = Instantiate(experiencePointPF, position, Quaternion.identity);
-        expPointsGO.transform.parent = experiencePointHolder;
-        ExperiencePoint xpScript = expPointsGO.GetComponent<ExperiencePoint>();
+        // GameObject expPointsGO = Instantiate(experiencePointPF, position, Quaternion.identity);
+        // expPointsGO.transform.parent = experiencePointHolder;
+        // ExperiencePoint xpScript = expPointsGO.GetComponent<ExperiencePoint>();
 
-        xpScript.Amount = amount;
-        xpScript.SpatialGroup = GetSpatialGroup(position.x, position.y);
-        xpScript.SurroundingSpatialGroups = new HashSet<int>(Utils.GetExpandedSpatialGroups(xpScript.SpatialGroup));
+        // xpScript.Amount = amount;
+        // xpScript.SpatialGroup = GetSpatialGroup(position.x, position.y);
+        // xpScript.SurroundingSpatialGroups = new HashSet<int>(Utils.GetExpandedSpatialGroups(xpScript.SpatialGroup));
 
         // xpScript.model.transform.localPosition += offSet;
     }
