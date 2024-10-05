@@ -5,3 +5,5 @@ char_main_idle.png
 char_enemy_walk.png
 bg_forest_night.png
 ui_button_play.png
+
+player_cat_idle.png
