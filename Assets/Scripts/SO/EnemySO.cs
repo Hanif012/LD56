@@ -1,18 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySO : MonoBehaviour
+[CreateAssetMenu(menuName = "LD56/EnemySO")]
+public class EnemySO : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
+    public Stats stats;
+    public Assets assets;
+
+    public void Death()
     {
-        
+        if (assets.audio.death.Length > 0)
+        {
+            int index = Random.Range(0, assets.audio.death.Length);
+            AudioSource.PlayClipAtPoint(assets.audio.death[index], Vector3.zero);
+        }
+    }
+    public void Attack()
+    {
+        if (assets.audio.attack.Length > 0)
+        {
+            int index = Random.Range(0, assets.audio.attack.Length);
+            AudioSource.PlayClipAtPoint(assets.audio.attack[index], Vector3.zero);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    [System.Serializable]
+    public class Stats
     {
-        
+        public float speed;
+        public float health;
+        public float damage;
+    }
+
+    [System.Serializable]
+    public class Assets
+    {
+        public GameObject prefab;
+        public Sprite sprite;
+        public EnemyAudio audio;
+    }
+    [System.Serializable]
+    public class EnemyAudio
+    {
+        public AudioClip[] attack;
+        public AudioClip[] death;
     }
 }
