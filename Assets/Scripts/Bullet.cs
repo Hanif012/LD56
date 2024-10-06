@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
 
     int spatialGroup = 0;
 
-    Vector2 movementDirection = Vector2.zero;
+    Vector3 movementDirection = Vector3.zero;
     public Vector2 MovementDirection
     {
         get { return movementDirection; }
@@ -62,7 +62,7 @@ public class Bullet : MonoBehaviour
         transform.position += Utils.V2toV3(movementDirection) * Time.deltaTime * movementSpeed;
 
         // Calculate the angle
-        float angle = Mathf.Atan2(movementDirection.y, movementDirection.x) * Mathf.Rad2Deg - 90f;
+        float angle = Mathf.Atan2(movementDirection.z, movementDirection.x) * Mathf.Rad2Deg - 90f;
 
         // Set the rotation of the transform
         if (!spinBullet) modelTransform.rotation = Quaternion.Euler(0, 0, angle);
@@ -123,8 +123,8 @@ public class Bullet : MonoBehaviour
         if (
             transform.position.x < GameController.instance.MAP_WIDTH_MIN ||
             transform.position.x > GameController.instance.MAP_WIDTH_MAX ||
-            transform.position.y < GameController.instance.MAP_HEIGHT_MIN ||
-            transform.position.y > GameController.instance.MAP_HEIGHT_MAX ||
+            transform.position.z < GameController.instance.MAP_HEIGHT_MIN ||
+            transform.position.z > GameController.instance.MAP_HEIGHT_MAX ||
             Vector2.Distance(transform.position, GameController.instance.player.position) > 20f
         )
         {

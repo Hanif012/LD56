@@ -263,7 +263,7 @@ public class GameController : MonoBehaviour
         int batchToBeAdded = GetBestBatch("enemy");
 
         // Get the QUADRANT of the player (25 quadrants in the map)
-        int playerQuadrant = GetSpatialGroupDynamic(player.position.x, player.position.y, spatialGroupWidth, spatialGroupHeight, 25);
+        int playerQuadrant = GetSpatialGroupDynamic(player.position.x, player.position.z, spatialGroupWidth, spatialGroupHeight, 25);
         List<int> expandedSpatialGroups = Utils.GetExpandedSpatialGroups(playerQuadrant, 25);
 
         // Remove the quadrant player is in
@@ -273,21 +273,21 @@ public class GameController : MonoBehaviour
         int randomSpatialGroup = expandedSpatialGroups[Random.Range(0, expandedSpatialGroups.Count)];
 
         // Get the center of that spatial group
-        Vector2 centerOfSpatialGroup = GetPartitionCenterDynamic(randomSpatialGroup, spatialGroupWidth, spatialGroupHeight, 25);
+        Vector3 centerOfSpatialGroup = GetPartitionCenterDynamic(randomSpatialGroup, spatialGroupWidth, spatialGroupHeight, 25);
 
         // Get a random position within that spatial group
         float sizeOfOneSpatialGroup = spatialGroupWidth / 5; // 100/5 -> 20
         float xVal = Random.Range(centerOfSpatialGroup.x - sizeOfOneSpatialGroup / 2, centerOfSpatialGroup.x + sizeOfOneSpatialGroup / 2);
-        float yVal = Random.Range(centerOfSpatialGroup.y - sizeOfOneSpatialGroup / 2, centerOfSpatialGroup.y + sizeOfOneSpatialGroup / 2);
+        float zVal = Random.Range(centerOfSpatialGroup.z - sizeOfOneSpatialGroup / 2, centerOfSpatialGroup.z + sizeOfOneSpatialGroup / 2);
 
         GameObject enemyGO = Instantiate(enemyPF, enemyHolder);
-        enemyGO.transform.position = new Vector3(xVal, yVal, 0);
+        enemyGO.transform.position = new Vector3(xVal, 0, zVal);
         enemyGO.transform.parent = enemyHolder;
 
         Enemy enemyScript = enemyGO.GetComponent<Enemy>();
 
         // Spatial group
-        int spatialGroup = GetSpatialGroup(enemyGO.transform.position.x, enemyGO.transform.position.y);
+        int spatialGroup = GetSpatialGroup(enemyGO.transform.position.x, enemyGO.transform.position.z);
         enemyScript.spatialGroup = spatialGroup;
         AddToSpatialGroup(spatialGroup, enemyScript);
 
@@ -302,26 +302,26 @@ public class GameController : MonoBehaviour
     // GetSpatialGroup(-50,  50); --> 9900
     // GetSpatialGroup( 50,  50); --> 9999
 
-    public int GetSpatialGroup(float xPos, float yPos)
+    public int GetSpatialGroup(float xPos, float zPos)
     {
-        return GetSpatialGroupDynamic(xPos, yPos, spatialGroupWidth, spatialGroupHeight, numberOfPartitions);
+        return GetSpatialGroupDynamic(xPos, zPos, spatialGroupWidth, spatialGroupHeight, numberOfPartitions);
     }
 
-    public int GetSpatialGroupStatic(float xPos, float yPos)
+    public int GetSpatialGroupStatic(float xPos, float zPos)
     {
         // Adjust positions to map's coordinate system
         float adjustedX = xPos + HALF_WIDTH_STATIC;
-        float adjustedY = yPos + HALF_HEIGHT_STATIC;
+        float adjustedZ = zPos + HALF_HEIGHT_STATIC;
 
         // Calculate the indices
         int xIndex = (int)(adjustedX / CELL_WIDTH_STATIC);
-        int yIndex = (int)(adjustedY / CELL_HEIGHT_STATIC);
+        int yIndex = (int)(adjustedZ / CELL_HEIGHT_STATIC);
 
         // Calculate the final index
         return xIndex + yIndex * CELLS_PER_ROW_STATIC;
     }
 
-    int GetSpatialGroupDynamic(float xPos, float yPos, float mapWidth, float mapHeight, int totalPartitions)
+    int GetSpatialGroupDynamic(float xPos, float zPos, float mapWidth, float mapHeight, int totalPartitions)
     {
         // Calculate the number of cells per row and column, assuming a square grid
         int cellsPerRow = (int)Mathf.Sqrt(totalPartitions);
@@ -333,11 +333,11 @@ public class GameController : MonoBehaviour
 
         // Adjust positions to map's coordinate system
         float adjustedX = xPos + (mapWidth / 2);
-        float adjustedY = yPos + (mapHeight / 2);
+        float adjustedZ = zPos + (mapHeight / 2);
 
         // Calculate the indices
         int xIndex = (int)(adjustedX / cellWidth);
-        int yIndex = (int)(adjustedY / cellHeight);
+        int yIndex = (int)(adjustedZ / cellHeight);
 
         // Ensure indices are within the range
         xIndex = Mathf.Clamp(xIndex, 0, cellsPerRow - 1);
@@ -347,7 +347,7 @@ public class GameController : MonoBehaviour
         return xIndex + yIndex * cellsPerRow;
     }
 
-    Vector2 GetPartitionCenterDynamic(int partition, float mapWidth, float mapHeight, int totalPartitions)
+    Vector3 GetPartitionCenterDynamic(int partition, float mapWidth, float mapHeight, int totalPartitions)
     {
         // Calculate the number of cells per row and column, assuming a square grid
         int cellsPerRow = (int)Mathf.Sqrt(totalPartitions);
@@ -363,9 +363,9 @@ public class GameController : MonoBehaviour
 
         // Calculate the center coordinates of the partition
         float centerX = (columnIndex + 0.5f) * cellWidth - (mapWidth / 2);
-        float centerY = (rowIndex + 0.5f) * cellHeight - (mapHeight / 2);
+        float centerZ = (rowIndex + 0.5f) * cellHeight - (mapHeight / 2);
 
-        return new Vector2(centerX, centerY);
+        return new Vector3(centerX, centerZ);
     }
 
     public void AddToSpatialGroup(int spatialGroupID, Enemy enemy)

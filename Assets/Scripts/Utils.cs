@@ -70,12 +70,12 @@ public class Utils : MonoBehaviour
         return expandedSpatialGroups;
     }
 
-    public static List<int> GetExpandedSpatialGroups(int spatialGroup, Vector2 direction)
+    public static List<int> GetExpandedSpatialGroups(int spatialGroup, Vector3 direction)
     {
         List<int> expandedSpatialGroups = new List<int>() { spatialGroup };
 
         bool goingRight = direction.x > 0;
-        bool goingTop = direction.y > 0;
+        bool goingTop = direction.z > 0;
 
         int widthRange = GameController.instance.SpatialGroupWidth; // ex. 100
         int heightRange = GameController.instance.SpatialGroupHeight; // ex. 100
@@ -124,12 +124,12 @@ public class Utils : MonoBehaviour
 
     public static Vector3 V2toV3(Vector2 v)
     {
-        return new Vector3(v.x, v.y, 0);
+        return new Vector3(v.x, 0, v.y);
     }
 
     public static Vector2 V3toV2(Vector3 v)
     {
-        return new Vector2(v.x, v.y);
+        return new Vector2(v.x, v.z);
     }
 
     public static string ListToString<T>(List<T> list)

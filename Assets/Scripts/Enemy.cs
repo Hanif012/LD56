@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour
         PushNearbyEnemies();
 
         // Update spatial group
-        int newSpatialGroup = GameController.instance.GetSpatialGroup(transform.position.x , transform.position.y); // GET spatial group
+        int newSpatialGroup = GameController.instance.GetSpatialGroup(transform.position.x , transform.position.z); // GET spatial group
         if (newSpatialGroup != spatialGroup)
         {
             GameController.instance.enemySpatialGroups[spatialGroup].Remove(this); // REMOVE from old spatial group
@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour
             if (enemy == null) continue;
             if (enemy == this) continue;
 
-            float distance = Mathf.Abs(transform.position.x - enemy.transform.position.x) + Mathf.Abs(transform.position.y - enemy.transform.position.y);
+            float distance = Mathf.Abs(transform.position.x - enemy.transform.position.x) + Mathf.Abs(transform.position.z - enemy.transform.position.z);
             if (distance < 0.2f)
             {
                 // Push this enemy away

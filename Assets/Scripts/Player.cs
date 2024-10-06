@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public bool shootRandom = false;
 
     // Stats
-    int health = 100;
+    [SerializeField] private int health = 100;
     int maxHealth = 100;
     float movementSpeed = 4f;
 
@@ -29,8 +29,8 @@ public class Player : MonoBehaviour
     float hitBoxRadius = 0.4f;
 
     // Nearest enemy position (for weapons)
-    Vector2 nearestEnemyPosition = Vector2.zero;
-    public Vector2 NearestEnemyPosition
+    Vector3 nearestEnemyPosition = Vector3.zero;
+    public Vector3 NearestEnemyPosition
     {
         get { return nearestEnemyPosition; }
         set { nearestEnemyPosition = value; }
@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        spatialGroup = GameController.instance.GetSpatialGroup(transform.position.x , transform.position.y); // GET spatial group
+        spatialGroup = GameController.instance.GetSpatialGroup(transform.position.x , transform.position.z); // GET spatial group
         LevelUp();
     }
 
@@ -56,15 +56,15 @@ public class Player : MonoBehaviour
         Vector3 movementVector = Vector3.zero;
 
         // WASD to move around
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)   ) movementVector += Utils.V2toV3(new Vector2( 0,  1));
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) ) movementVector += Utils.V2toV3(new Vector2(-1,  0)); 
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) ) movementVector += Utils.V2toV3(new Vector2( 0, -1));
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) movementVector += Utils.V2toV3(new Vector2( 1,  0));
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)   ) movementVector += Utils.V2toV3(new Vector3( 0,  1));
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) ) movementVector += Utils.V2toV3(new Vector3(-1,  0)); 
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) ) movementVector += Utils.V2toV3(new Vector3( 0, -1));
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) movementVector += Utils.V2toV3(new Vector3( 1,  0));
 
         transform.position += movementVector.normalized * Time.deltaTime * movementSpeed;
 
         // Calculate nearest enemy direction
-        spatialGroup = GameController.instance.GetSpatialGroup(transform.position.x , transform.position.y); // GET spatial group
+        spatialGroup = GameController.instance.GetSpatialGroup(transform.position.x , transform.position.z); // GET spatial group
         CalculateNearestEnemyDirection();
 
         // Colliding with any enemy? Lose health?
@@ -102,7 +102,7 @@ public class Player : MonoBehaviour
     {
         // Just checks enemies in the same spatial group
         float minDistance = 100f;
-        Vector2 closestPosition = Vector2.zero;
+        Vector3 closestPosition = Vector3.zero;
         bool foundATarget = false;
 
         List<int> spatialGroupsToSearch = new List<int>() { spatialGroup };
