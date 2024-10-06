@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fa67eaf2430c4f24bb9943a23101fa52
+guid: 380f13fd099ce9c46be91aa92620d509
 importerOverride:
   nativeImporterType: 2089858483
   scriptedImporterType:
@@ -99,70 +99,7 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: Body
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 1036
-      y: 482
-      width: 293
-      height: 293
-    spriteID: 508201f4b55cdc741a154a53458d2e6a
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 1036, y: 482}
-    spritePosition: {x: 456, y: 239}
-  - name: Layer 1
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 1036
-      y: 4
-      width: 567
-      height: 470
-    spriteID: d15fdf8d87e25484c9b2a849992356d1
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 1036, y: 4}
-    spritePosition: {x: 342, y: 72}
-  - name: Mold
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 1036
-      width: 845
-      height: 801
-    spriteID: af74d03d1146c7e4580e32032250fc49
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 1036}
-    spritePosition: {x: 39, y: 78}
-  - name: Background
+  - name: character_headhumanman_enemy
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -171,9 +108,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 1024
-      height: 1024
-    spriteID: 4c032598e38bff54eafc6270cfe62677
+      width: 573
+      height: 522
+    spriteID: 21b4aa0e2266e16439f59b1a1618594b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -182,7 +119,49 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-    spritePosition: {x: 0, y: 0}
+    spritePosition: {x: 206, y: 408}
+  - name: character_bodyhumanman_enemy
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 585
+      y: 4
+      width: 366
+      height: 366
+    spriteID: ea0dd80a3c899d64a836e6fb46a16bd6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 585, y: 4}
+    spritePosition: {x: 324, y: 106}
+  - name: character_armhumanman_enemy
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 534
+      width: 670
+      height: 288
+    spriteID: 58de6a72bb6c4384aaf4aefedc82a810
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 534}
+    spritePosition: {x: 170, y: 160}
   characterData:
     bones: []
     parts: []
@@ -219,56 +198,166 @@ ScriptedImporter:
   resliceFromLayer: 0
   mosaicPSDLayers: []
   rigPSDLayers:
-  - name: Head
+  - name: folder_character_humanman_enemy
     spriteName: 
-    isGroup: 0
+    isGroup: 1
     parentIndex: -1
-    spriteID: 6e163b2369816164eae894a2e47fd6d9
-    layerID: 6
+    spriteID: 888e465e22e3735469fe99427c0c941c
+    layerID: 51
     mosaicPosition: {x: 0, y: 0}
     flatten: 0
     isImported: 0
-    isVisible: 0
-  - name: Body
-    spriteName: Body
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 508201f4b55cdc741a154a53458d2e6a
-    layerID: 10
-    mosaicPosition: {x: 1036, y: 482}
-    flatten: 0
-    isImported: 1
     isVisible: 1
-  - name: Layer 1
-    spriteName: Layer 1
+  - name: character_headhumanman_enemy
+    spriteName: character_headhumanman_enemy
     isGroup: 0
-    parentIndex: -1
-    spriteID: d15fdf8d87e25484c9b2a849992356d1
-    layerID: 9
-    mosaicPosition: {x: 1036, y: 4}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Mold
-    spriteName: Mold
-    isGroup: 0
-    parentIndex: -1
-    spriteID: af74d03d1146c7e4580e32032250fc49
-    layerID: 7
-    mosaicPosition: {x: 4, y: 1036}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Background
-    spriteName: Background
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 4c032598e38bff54eafc6270cfe62677
-    layerID: 1
+    parentIndex: 0
+    spriteID: 21b4aa0e2266e16439f59b1a1618594b
+    layerID: 48
     mosaicPosition: {x: 4, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
+  - name: character_bodyhumanman_enemy
+    spriteName: character_bodyhumanman_enemy
+    isGroup: 0
+    parentIndex: 0
+    spriteID: ea0dd80a3c899d64a836e6fb46a16bd6
+    layerID: 45
+    mosaicPosition: {x: 585, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: character_armhumanman_enemy
+    spriteName: character_armhumanman_enemy
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 58de6a72bb6c4384aaf4aefedc82a810
+    layerID: 42
+    mosaicPosition: {x: 4, y: 534}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Process
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 3fb89164e3e74f4448d76ce7b6998f75
+    layerID: 37
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: Head
+    spriteName: 
+    isGroup: 0
+    parentIndex: 4
+    spriteID: a5ecf33283c57a24da3cd93bebbf442d
+    layerID: 28
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Layer 2
+    spriteName: 
+    isGroup: 0
+    parentIndex: 4
+    spriteID: b3fc31073b1626445a7092e9478eaca8
+    layerID: 34
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Color Head
+    spriteName: 
+    isGroup: 0
+    parentIndex: 4
+    spriteID: f4ac425da7f63bf408befefc88348ad8
+    layerID: 30
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Body
+    spriteName: 
+    isGroup: 0
+    parentIndex: 4
+    spriteID: 5b96252b211740842b5256384beed20e
+    layerID: 27
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Layer 3
+    spriteName: 
+    isGroup: 0
+    parentIndex: 4
+    spriteID: 2ef357aa49dd620478210c439479ce1b
+    layerID: 35
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Color Body
+    spriteName: 
+    isGroup: 0
+    parentIndex: 4
+    spriteID: 2e633589a2c08674cb2ed331be2e5a5a
+    layerID: 31
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Arm
+    spriteName: 
+    isGroup: 0
+    parentIndex: 4
+    spriteID: f1f77027150af8949991e942e0ce5f54
+    layerID: 26
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Layer 4
+    spriteName: 
+    isGroup: 0
+    parentIndex: 4
+    spriteID: 67ce5a44b09a64e4892e37f71c8fc40f
+    layerID: 36
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Arm Color
+    spriteName: 
+    isGroup: 0
+    parentIndex: 4
+    spriteID: cb3bdc94d8462a3429c1bf406426b6fc
+    layerID: 33
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Construction
+    spriteName: 
+    isGroup: 0
+    parentIndex: 4
+    spriteID: 1e54d6d2ab93cd44993fa7a5390fc997
+    layerID: 24
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: Mold
+    spriteName: 
+    isGroup: 0
+    parentIndex: 4
+    spriteID: d0f33a6a1ede7c1498a23f32fee58ae6
+    layerID: 7
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
   sharedRigPSDLayers: []
   pSDLayerImportSetting: []
   importFileNodeState: 1
