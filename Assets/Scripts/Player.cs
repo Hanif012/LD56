@@ -87,7 +87,7 @@ public class Player : MonoBehaviour
             if (enemy == null) continue;
 
             // float distance = Mathf.Abs(transform.position.x - enemy.transform.position.x) + Mathf.Abs(transform.position.y - enemy.transform.position.y);
-            float distance = Vector2.Distance(transform.position, enemy.transform.position);
+            float distance = Vector3.Distance(transform.position, enemy.transform.position);
             if (distance < hitBoxRadius)
             {
                 // Take damage

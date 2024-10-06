@@ -17,8 +17,8 @@ public class GameController : MonoBehaviour
     public GameObject enemyPF;
     public Transform enemyHolder;
     
-    float enemySpawnTimer = 0f;
-    float enemySpawnTimerCD = 0f;
+    [SerializeField] float enemySpawnTimer = 5f;
+    [SerializeField] private float enemySpawnTimerCD = 5f;
     int maxEnemyCount = 10000;
 
     // Enemy logic
@@ -233,7 +233,7 @@ public class GameController : MonoBehaviour
 
     void RunBatchLogic(int batchID)
     {
-        // Run logic for all enemies in batch
+        // // Run logic for all enemies in batch
         foreach (Enemy enemy in enemyBatches[batchID])
         {
             if (enemy) enemy.RunLogic();
