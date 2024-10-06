@@ -30,6 +30,13 @@ public class EnemySO : ScriptableObject
         public float speed;
         public int health;
         public int damage;
+        public float attackSpeed;
+        public enum EnemyClass
+        {
+            Melee,
+            Ranged
+        }
+        public EnemyClass enemyClass;
     }
 
     [System.Serializable]

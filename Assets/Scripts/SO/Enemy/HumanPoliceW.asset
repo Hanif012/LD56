@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: HumanPoliceW
   m_EditorClassIdentifier: 
   stats:
-    speed: 3
+    speed: 15
     health: 3
     damage: 1
+    attackSpeed: 0
+    enemyClass: 0
   assets:
     prefab: {fileID: 0}
     sprite: {fileID: 0}

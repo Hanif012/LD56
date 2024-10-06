@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: HumanM
   m_EditorClassIdentifier: 
   stats:
-    speed: 2
+    speed: 15
     health: 2
     damage: 1
+    attackSpeed: 0
+    enemyClass: 0
   assets:
     prefab: {fileID: 0}
     sprite: {fileID: 0}

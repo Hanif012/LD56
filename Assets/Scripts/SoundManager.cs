@@ -8,6 +8,6 @@ public class SoundManager: MonoBehaviour
     {
         GameObject soundGameObject = new GameObject("Sound");
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>(); 
-        //audioSource.PlayOneShot(GameAssets.i.PlayerAttack);
+        audioSource.PlayOneShot(Resources.Load<AudioClip>("Sound"));
     }
 }
