@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "LD56/EnemySO")]
 public class EnemySO : ScriptableObject
 {
+    
     public Stats stats;
     public Assets assets;
 
@@ -27,8 +28,8 @@ public class EnemySO : ScriptableObject
     public class Stats
     {
         public float speed;
-        public float health;
-        public float damage;
+        public int health;
+        public int damage;
     }
 
     [System.Serializable]
