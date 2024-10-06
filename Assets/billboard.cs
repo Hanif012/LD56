@@ -25,8 +25,8 @@ public class billboard : MonoBehaviour
         // Make the billboard face the camera
         Vector3 targetPosition = Camera.main.transform.position;
 
-        if (lockYAxis) targetPosition.y = transform.position.y;
         if (lockXAxis) targetPosition.x = transform.position.x;
+        if (lockYAxis) targetPosition.y = transform.position.y;
         if (lockZAxis) targetPosition.z = transform.position.z;
 
         transform.LookAt(targetPosition);
