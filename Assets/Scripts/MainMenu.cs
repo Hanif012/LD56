@@ -5,9 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private Scene NextScene;
+    [SerializeField] private string nextSceneName = "Fathi";
     public void PlayGame()
     {
-        SceneManager.LoadScene(NextScene.buildIndex);
+        SceneManager.LoadScene(nextSceneName);
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Template/DefaultTemplate.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 0
+    path: Assets/Scenes/Menu.unity
+    guid: 553ed7430c241a0449bb1c011bec09e4
+  - enabled: 1
+    path: Assets/Scenes/Fathi.unity
+    guid: 0e86609a823f1ca4b96429fd4a3ef40f
   m_configObjects: {}

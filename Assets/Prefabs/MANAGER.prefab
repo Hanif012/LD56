@@ -45,6 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e122a7864311944489a5fd171ca76e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundMusic:
+  - {fileID: 8300000, guid: cb457f310e5914147a01da89353b0adb, type: 3}
+  - {fileID: 8300000, guid: c2ed5a94dcbb68246a010c0366bc3e25, type: 3}
+  soundShoot: {fileID: 8300000, guid: f430d1cd55e69e843ba8a57d590fba53, type: 3}
+  soundDead: {fileID: 8300000, guid: f430d1cd55e69e843ba8a57d590fba53, type: 3}
+  soundMusicGameOver: {fileID: 8300000, guid: 62279652e377b9741b56487c03571523, type: 3}
+  soundHit: {fileID: 8300000, guid: f430d1cd55e69e843ba8a57d590fba53, type: 3}
 --- !u!114 &9215901386051994278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,6 +64,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d305b1776436c54bb0c8903ed8a6180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 0}
-  enemyPrefab: []
+  playerPrefab: {fileID: 3259179229496398589, guid: 31609e8b86a27904b902fb1c3ebcd17f,
+    type: 3}
+  enemySpawner:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   Level: 1
+  levelDelay: 1
+  gameState: 0

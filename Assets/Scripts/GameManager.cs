@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Serialization;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] public UIGameplayManager uiGameplayManager;
     [SerializeField] public GameObject playerPrefab;
     [SerializeField] public EnemySpawner[] enemySpawner;
-    [SerializeField] public int Level = 1;
+    [SerializeField] public int Level = 0;
     [SerializeField] public float levelDelay = 1f;
     [SerializeField] public enum GameState
     {
@@ -20,11 +22,12 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] public GameState gameState = GameState.Pause;
     private bool isLevelingUp = false;
-
+    [SerializeField] public Text LevelText;
 
     private void Start()
     {
         Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+        
     }
 
     private void Update()
@@ -36,6 +39,21 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             gameState = GameState.Pause;
+            uiGameplayManager.Pause();
+        }
+        StartCoroutine(AutoSkipLevel());
+    }
+
+    private bool isAutoSkipping = false;
+
+    public IEnumerator AutoSkipLevel()
+    {
+        if (gameState == GameState.Playing && !isAutoSkipping)
+        {
+            isAutoSkipping = true;
+            yield return new WaitForSeconds(30f);
+            StartCoroutine(SkipLevel());
+            isAutoSkipping = false;
         }
     }
     public IEnumerator SkipLevel()
@@ -45,9 +63,14 @@ public class GameManager : MonoBehaviour
         if (enemySpawner.Length > 0)
         {
             // Spawn a random enemy from the spawner array
-        
+            for(int i = 0; i < enemySpawner.Length; i++)
+            {
+                Debug.Log("Spawning enemy from spawner " + i);
+                StartCoroutine(enemySpawner[i].SpawnEnemy());
+            }
         }
         Level++;
+        LevelText.text = "Level: " + Level;
         yield return new WaitForSeconds(levelDelay);
         
         // Call SpawnEnemy() method from the EnemySpawner script
