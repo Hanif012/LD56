@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
         LevelUp,
         GameOver
     };
+    
     [SerializeField] public GameState gameState = GameState.Pause;
     private bool isLevelingUp = false;
 
@@ -49,6 +50,13 @@ public class GameManager : MonoBehaviour
         Level++;
         yield return new WaitForSeconds(levelDelay);
         
+        // Call SpawnEnemy() method from the EnemySpawner script
+        for(int i = 0; i < enemySpawner.Length; i++)
+        {
+            Debug.Log("Spawning enemy from spawner " + i);
+            StartCoroutine(enemySpawner[i].SpawnEnemy());
+        }
+
         isLevelingUp = false;
     }
 
