@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Serialization;
+using DG.Tweening;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -14,7 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] float movementSpeed = 4f;
 
     // Experience & level
-    long xp = 0;
+    // long xp = 0;
     long xpFromLastLevel = 0;
     long xpToNextLevel = 0;
     int level = 0;
@@ -49,7 +50,6 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) movementVector += new Vector3(-1, 0, 0);
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) movementVector += new Vector3(0, 0, -1);
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) movementVector += new Vector3(1, 0, 0);
-
         transform.position += movementVector.normalized * Time.deltaTime * movementSpeed;
     }
 
@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
     public void ChangeHealth(int amount)
     {
         health += amount;
-
+        transform.DOShakeScale(1f, new Vector3(1.1f, 1.1f, 1.1f), 10, 10, false);
         if (health <= 0)
         {
             KillPlayer();
@@ -76,7 +76,7 @@ public class Player : MonoBehaviour
     
     void KillPlayer()
     {
-
-        Destroy(gameObject);
+        GameManager gameManager = FindObjectOfType<GameManager>();
+        gameManager.GameOver();
     }
 }

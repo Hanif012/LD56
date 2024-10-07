@@ -7,6 +7,12 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float lifeTime;
     [SerializeField] private GameObject hitEffect;
     [SerializeField] private AudioClip hitSound;
+    private enum BulletType
+    {
+        Player,
+        Enemy
+    }
+    [SerializeField] private BulletType bulletType;
 
     private Rigidbody rb;
 

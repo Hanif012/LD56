@@ -2,16 +2,17 @@ using System.Collections;
 using DG.Tweening;
 using TMPro;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private EnemySO enemyData;
-    [SerializeField] private GameObject damageArea;
+    [SerializeField] private GameObject damageObject;
     [SerializeField] private Transform target;
     [SerializeField] private float attackSpeed = 4f;
-    [SerializeField] private float separationDistance = 2f;
+    [SerializeField] private float separationDistance = 20f;
     [SerializeField] private GameObject skin;
     [SerializeField] private GameObject debugLabel;
     private int health;
@@ -20,7 +21,24 @@ public class Enemy : MonoBehaviour
     private NavMeshAgent agent;
     private Coroutine animCoroutine;
     private Coroutine attackCoroutine;
+    private bool onPlayerEntered = false;
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            onPlayerEntered = true;
+            Debug.Log("Player hit by enemy");
+        }
+    }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            onPlayerEntered = false;
+            Debug.Log("Player hit by enemy[exit]");
+        }
+    }
     private enum EnemyState
     {
         Idle,
@@ -66,7 +84,6 @@ public class Enemy : MonoBehaviour
         {
             Debug.LogError("Skin GameObject not assigned. Please assign the skin in the Inspector.");
         }
-
         if (debugLabel == null)
         {
             Debug.LogError("DebugLabel GameObject not assigned. Please assign the debugLabel in the Inspector.");
@@ -111,7 +128,7 @@ public class Enemy : MonoBehaviour
         {
             agent.SetDestination(target.position);
             float distanceToTarget = Vector3.Distance(transform.position, target.position);
-            if (distanceToTarget < 1.5f)
+            if (onPlayerEntered)
             {
                 if (currentState != EnemyState.Attacking)
                 {
@@ -133,6 +150,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    void shoot()
+    {
+        // Shoot at the player
+        
+    }
     private void ChangeState(EnemyState newState)
     {
         if (currentState == newState) return;
@@ -153,7 +175,13 @@ public class Enemy : MonoBehaviour
         switch (currentState)
         {
             case EnemyState.Moving:
+                // RESET ANIMATION
                 skin.transform.DOScale(new Vector3(1, 1f, 1f), 1f);
+                skin.transform.DORotate(new Vector3(0, 0, 0), 1f);
+                yield return new WaitForSeconds(1f);
+                // ANIMATION
+                skin.transform.DORotate(new Vector3(-15, 0, 0), 1f);
+                skin.transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 1f);
                 break;
             case EnemyState.Attacking:
                 skin.transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 1f);
@@ -170,14 +198,11 @@ public class Enemy : MonoBehaviour
         while (currentState == EnemyState.Attacking)
         {
             Debug.Log("Attacking Player Start");
-            if (damageArea != null)
-            {
-                damageArea.SetActive(true);
-            }
             yield return new WaitForSeconds(attackSpeed);
-            if (damageArea != null)
+            if (damageObject != null)
             {
-                damageArea.SetActive(false);
+                damageObject.SetActive(true);
+                damageObject.SetActive(false);
             }
             Debug.Log("Attacking Player End");
             ChangeState(EnemyState.Idle);

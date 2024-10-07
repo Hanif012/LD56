@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject playerPrefab;
     [SerializeField] public EnemySpawner[] enemySpawner;
     [SerializeField] public int Level = 1;
-    [SerializeField] public float levelDelay = 5f;
+    [SerializeField] public float levelDelay = 1f;
     [SerializeField] public enum GameState
     {
         Playing,
